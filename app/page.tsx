@@ -1,69 +1,87 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className="min-h-screen bg-white px-4 py-10 sm:px-6">
+      <div className="mx-auto w-full max-w-xl">
+        <header className="text-center">
+          <p className="text-sm text-gray-500">AI小説制作サービス</p>
+          <h1 className="mt-2 text-4xl font-bold tracking-wide text-gray-900 sm:text-5xl">
+            KOTOC
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg">
+            連携したXの投稿を、指定した期間に応じて自動取得し、オリジナル小説を作成します。初期版はXのみ対応です。
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        </header>
+
+        <form className="mt-10 space-y-6">
+          <section className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-4">
+            <p className="text-sm font-medium text-gray-800">Xアカウント連携</p>
+            <p className="mt-2 text-sm font-medium text-gray-900">
+              連携済み（デモ表示）
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-600">
+              これは画面確認用のデモ表示です。実際のXアカウントには連携していません。
+            </p>
+          </section>
+
+          <fieldset>
+            <legend className="mb-3 text-sm font-medium text-gray-800">
+              投稿の対象期間
+            </legend>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div>
+                <label htmlFor="start-date" className="mb-2 block text-sm text-gray-700">
+                  開始日
+                </label>
+                <input
+                  id="start-date"
+                  name="startDate"
+                  type="date"
+                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-3 text-base text-gray-900 focus:border-gray-900 focus:outline-none"
+                />
+              </div>
+              <div>
+                <label htmlFor="end-date" className="mb-2 block text-sm text-gray-700">
+                  終了日
+                </label>
+                <input
+                  id="end-date"
+                  name="endDate"
+                  type="date"
+                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-3 text-base text-gray-900 focus:border-gray-900 focus:outline-none"
+                />
+              </div>
+            </div>
+          </fieldset>
+
+          <div>
+            <label htmlFor="genre" className="mb-2 block text-sm font-medium text-gray-800">
+              小説ジャンル
+            </label>
+            <select
+              id="genre"
+              name="genre"
+              defaultValue=""
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-3 text-base text-gray-900 focus:border-gray-900 focus:outline-none"
+            >
+              <option value="" disabled>
+                選択してください
+              </option>
+              <option value="romance">恋愛</option>
+              <option value="mystery">ミステリー</option>
+              <option value="fantasy">ファンタジー</option>
+              <option value="human-drama">ヒューマンドラマ</option>
+              <option value="sf">SF</option>
+            </select>
+          </div>
+
+          <button
+            type="button"
+            className="w-full rounded-lg bg-gray-900 px-4 py-3 text-base font-medium text-white"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            物語を作成する
+          </button>
+        </form>
+      </div>
+    </main>
   );
 }
